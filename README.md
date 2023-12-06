@@ -24,6 +24,11 @@ pom.xml
     <artifactId>opentelemetry-exporter-zipkin</artifactId>
     <version>1.32.0</version>
 </dependency>
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-aop</artifactId>
+</dependency>
 ```
 
 ## Step 2 :: Start [zipkin server](https://zipkin.io/)
