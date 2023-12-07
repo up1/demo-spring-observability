@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger{36}.%M - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="json" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/my-log.json</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FILE}.json.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+<!--        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">-->
+<!--            <providers>-->
+<!--                <timestamp>-->
+<!--                    <timeZone>UTC</timeZone>-->
+<!--                </timestamp>-->
+<!--                <pattern>-->
+<!--                    {-->
+<!--                    "timestamp": "@timestamp",-->
+<!--                    "severity": "%level",-->
+<!--                    "service": "${springAppName:-}",-->
+<!--                    "trace": "%X{traceId:-}",-->
+<!--                    "span": "%X{spanId:-}",-->
+<!--                    "pid": "${PID:-}",-->
+<!--                    "thread": "%thread",-->
+<!--                    "class": "%logger{40}",-->
+<!--                    "message": "%message"-->
+<!--                    }-->
+<!--                </pattern>-->
+<!--            </providers>-->
+<!--        </encoder>-->
+    </appender>
+
+    <logger name="com.example.demo_observable" additivity="false" level="info">
+        <appender-ref ref="json" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+</configuration>
