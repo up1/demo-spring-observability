@@ -14,26 +14,6 @@
             <maxHistory>7</maxHistory>
         </rollingPolicy>
         <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
-<!--        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">-->
-<!--            <providers>-->
-<!--                <timestamp>-->
-<!--                    <timeZone>UTC</timeZone>-->
-<!--                </timestamp>-->
-<!--                <pattern>-->
-<!--                    {-->
-<!--                    "timestamp": "@timestamp",-->
-<!--                    "severity": "%level",-->
-<!--                    "service": "${springAppName:-}",-->
-<!--                    "trace": "%X{traceId:-}",-->
-<!--                    "span": "%X{spanId:-}",-->
-<!--                    "pid": "${PID:-}",-->
-<!--                    "thread": "%thread",-->
-<!--                    "class": "%logger{40}",-->
-<!--                    "message": "%message"-->
-<!--                    }-->
-<!--                </pattern>-->
-<!--            </providers>-->
-<!--        </encoder>-->
     </appender>
 
     <logger name="com.example.demo_observable" additivity="false" level="info">
